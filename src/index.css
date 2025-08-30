@@ -38,20 +38,35 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Glass morphism design tokens */
+    --glass-bg: 0 0% 100%;
+    --glass-bg-opacity: 0.15;
+    --glass-border: 0 0% 100%;
+    --glass-border-opacity: 0.3;
+    --glass-text: 0 0% 100%;
+    --glass-text-muted: 0 0% 100%;
+    --glass-text-muted-opacity: 0.7;
+    --glass-shadow: 0 0% 0%;
+    
+    /* Beautiful shadows */
+    --shadow-elegant: 0 2.8px 2.2px hsla(var(--glass-shadow) / 0.034), 
+                     0 6.7px 5.3px hsla(var(--glass-shadow) / 0.048), 
+                     0 12.5px 10px hsla(var(--glass-shadow) / 0.06), 
+                     0 22.3px 17.9px hsla(var(--glass-shadow) / 0.072), 
+                     0 41.8px 33.4px hsla(var(--glass-shadow) / 0.086), 
+                     0 100px 80px hsla(var(--glass-shadow) / 0.12);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s ease;
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -101,5 +116,37 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: hsla(var(--glass-bg) / var(--glass-bg-opacity));
+    backdrop-filter: blur(12px);
+    border: 1px solid hsla(var(--glass-border) / var(--glass-border-opacity));
+  }
+  
+  .glass-input {
+    background: hsla(var(--glass-bg) / 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid hsla(var(--glass-border) / 0.2);
+  }
+  
+  .glass-button {
+    background: linear-gradient(135deg, hsla(var(--glass-bg) / 0.3), hsla(var(--glass-bg) / 0.2));
+    backdrop-filter: blur(8px);
+    border: 1px solid hsla(var(--glass-border) / 0.4);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
   }
 }
